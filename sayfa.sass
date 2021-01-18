@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap')
+
+*
+  box-sizing border-box
+
+:root
+  --bg hsl(220, 50%, 20%)
+  --struck hsl(0, 100%, 50%)
+
+body
+  min-height 100vh
+  display flex
+  align-items center
+  justify-content center
+  flex-direction column
+  color hsl(0, 0%, 100%)
+  font-family sans-serif
+  background var(--bg)
+  perspective 1000px
+  transform-style preserve-3d
+
+  & > .list__container
+    margin-bottom 6rem
+
+  & > .rule
+    margin-bottom 2rem
+
+  hr
+    margin 1rem 0
+
+.rule
+  font-size 2rem
+  font-weight bold
+
+.list
+  font-family 'Permanent Marker', cursive
+  color hsl(0, 0%, 10%)
+  padding 1rem 3rem
+  background hsl(0, 0%, 90%)
+  border-radius 6px
+  transform rotateY(calc(var(--x, -10) * 1deg)) rotateX(calc(var(--y, 5) * 1deg))
+
+  &__container
+    position relative
+
+    &:after
+      content ''
+      position absolute
+      bottom -20%
+      left 5%
+      right 5%
+      filter blur(5px)
+      height 10%
+      transform rotateY(calc(var(--x, -10) * 1deg)) rotateX(calc(var(--y, 5) * 1deg))
+      background radial-gradient(hsla(0, 0%, 10%, 0.85), transparent 80%)
+
+  &__title
+    margin 0
+    text-decoration underline
+
+  &__children
+    display grid
+    padding 0
+
+    & > li + li
+      margin-top 0.5rem
+
+  &__child
+    list-style var(--list-style, none)
